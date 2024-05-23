@@ -72,6 +72,21 @@ export interface Login {
   password: string;
 }
 
+export interface Signup {
+  phoneNumber: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  countryCode: string;
+}
+
 export interface LoginResponse {
   access_token: string;
+}
+
+export interface CountryType {
+  code: string;
+  label: string;
+  phone: string;
+  suggested?: boolean;
 }

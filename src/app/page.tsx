@@ -34,7 +34,7 @@ export default function Home() {
             color="secondary"
             variant="contained"
             sx={{
-              marginTop: 3,
+                  marginTop: 3,
               paddingX: 5,
               paddingY: 1,
             }}

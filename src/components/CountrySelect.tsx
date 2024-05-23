@@ -4,8 +4,9 @@ import _ from "lodash";
 import { Autocomplete, Box, InputAdornment, TextField } from "@mui/material";
 import Image from "next/image";
 import { Controller } from "react-hook-form";
+import { CountryType } from "@/interfaces/interfaces";
 
-function CountrySelect({ control, name,errors }: any) {
+function CountrySelect({ control, name, errors }: any) {
   const getCountryCodeByLabel = (label: any) => {
     const country = _.find(countries, { label: label });
     return country?.code.toLowerCase() || undefined;

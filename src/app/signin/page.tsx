@@ -35,7 +35,7 @@ export default function SignInWithEmail() {
     console.log(data);
     reset();
   };
-
+  
   return (
     <Box
       component="main"
@@ -52,7 +52,7 @@ export default function SignInWithEmail() {
         onSubmit={handleSubmit(onSubmit)}
       >
         <Typography sx={{ color: "text.primary" }} variant="h5">
-          Sign In
+          Sign In 
         </Typography>
         <TextField
           fullWidth
