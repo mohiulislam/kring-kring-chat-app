@@ -1,5 +1,5 @@
 "use client";
-import { useSignupMutation } from "@/lib/features/api/auth/signupApi";
+import { useRegisterMutation } from "@/lib/features/api/auth/registerApi";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
@@ -38,10 +38,17 @@ export default function SignInWithPhone() {
   });
   watch();
 
-  const [signUp, { isLoading, error, data, isSuccess, isError }] =
-    useSignupMutation();
+  const [registration, { isLoading, error, data, isSuccess, isError }] =
+    useRegisterMutation();
 
-  const onSubmit: SubmitHandler<FormData> = (data) => signUp({ ...data });
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    registration({
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      password: data.password,
+    });
+  };
   return (
     <>
       {

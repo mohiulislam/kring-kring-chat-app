@@ -72,12 +72,11 @@ export interface Login {
   password: string;
 }
 
-export interface Signup {
-  phoneNumber: string;
+export interface Register {
   password: string;
   firstName: string;
   lastName: string;
-  countryCode: string;
+  email: string;
 }
 
 export interface LoginResponse {

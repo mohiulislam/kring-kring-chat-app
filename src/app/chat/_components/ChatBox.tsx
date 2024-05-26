@@ -62,7 +62,7 @@ function ChatBox() {
           }}
         >
           <ChatBubble
-            message="Hello sona .I Love you ."
+            message="Assalamualaykum."
             isSender={true}
             deliveryTime="now"
           />
@@ -75,7 +75,7 @@ function ChatBox() {
           }}
         >
           <ChatBubble
-            message="Hello sona"
+            message="Walaykumus salam"
             isSender={false}
             deliveryTime="now"
           />

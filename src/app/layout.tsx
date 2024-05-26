@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/material";
 import { darkTheme } from "@/theme/muitheme";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import StoreProvider from "./StoreProvider";
+import { Box } from "@mui/system";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +23,14 @@ export default function RootLayout({
     <html lang="en">
       <AppRouterCacheProvider>
         <ThemeProvider theme={darkTheme}>
-          <body className="bg-primaryBackground">
-            {" "}
-            <StoreProvider>{children}</StoreProvider>
+          <body>
+            <StoreProvider>
+              <Box
+                sx={{ height: "100vh", backgroundColor: "background.default" }}
+              >
+                {children}
+              </Box>
+            </StoreProvider>
           </body>
         </ThemeProvider>
       </AppRouterCacheProvider>

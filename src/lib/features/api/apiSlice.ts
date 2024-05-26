@@ -12,7 +12,7 @@ const apiSlice = createApi({
         
         headers.set(
           "authorization",
-          `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vaGl1bGlzbGFtNUBnbWFpbC5jb20iLCJzdWIiOiI2NjQ0MmM5MmM1MDA5NWFhMWE3ZjdiMmMiLCJpYXQiOjE3MTYwMTQxNzIsImV4cCI6MTc3NjAxNDE3Mn0.VDON1pGXRGibvRZ8-Bx2FJEF9r7uChvE3oqxXGeQIkk`
+          `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vaGl1bGlzbGFtOTAwQGdtYWlsLmNvbSIsInN1YiI6IjY2NTE0NmNmYWIyZGE3NTQzNDQ2YjU3OSIsImlhdCI6MTcxNjYwNDAzMSwiZXhwIjo1MzE2NjA0MDMxfQ.BYHygbIZVQw6_nsJdJg19vIJbrc4Z9FO4w__awHnT30`
         );
       }
       return headers;

@@ -14,11 +14,18 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <Box sx={{ textAlign: "center" }}>
+      <Box
+        sx={{
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
         <Image
           src="/assets/imgs/logo.svg"
           alt="Vercel Logo"
-          className="m-auto"
           width={100}
           height={100}
           priority
@@ -34,7 +41,7 @@ export default function Home() {
             color="secondary"
             variant="contained"
             sx={{
-                  marginTop: 3,
+              marginTop: 3,
               paddingX: 5,
               paddingY: 1,
             }}
