@@ -2,6 +2,7 @@
 import * as React from "react";
 import { Input as BaseInput } from "@mui/base/Input";
 import { Box, styled } from "@mui/system";
+import { Button, Typography } from "@mui/material";
 
 function OTP({
   separator,
@@ -201,12 +202,35 @@ export default function OTPInput() {
           gap: 2,
         }}
       >
+        <Typography
+          variant="h4"
+          sx={{
+            color: "text.secondary",
+            textAlign: "center",
+            marginBottom: "20px",
+          }}
+        >
+          Verify OTP
+        </Typography>
+
         <OTP
           separator={<span>-</span>}
           value={otp}
           onChange={setOtp}
           length={5}
         />
+        <Button
+          color="secondary"
+          variant="contained"
+          sx={{
+            width: "40%",
+            marginTop: 3,
+            alignSelf: "center",
+            paddingY: 1,
+          }}
+        >
+          Verify OTP
+        </Button>
       </Box>
     </Box>
   );
@@ -240,10 +264,9 @@ const InputElement = styled("input")(
   width: 60px;
   height: 70px;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 400;
   line-height: 1.5;
-  padding: 10px 0px;
   border-radius: 10px; 
   text-align: center;
   color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
