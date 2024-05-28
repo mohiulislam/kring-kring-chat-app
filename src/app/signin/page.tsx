@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, Link, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -35,7 +35,7 @@ export default function SignInWithEmail() {
     console.log(data);
     reset();
   };
-  
+
   return (
     <Box
       component="main"
@@ -52,7 +52,7 @@ export default function SignInWithEmail() {
         onSubmit={handleSubmit(onSubmit)}
       >
         <Typography sx={{ color: "text.primary" }} variant="h5">
-          Sign In 
+          Sign In
         </Typography>
         <TextField
           fullWidth
@@ -74,6 +74,10 @@ export default function SignInWithEmail() {
         <Button type="submit" variant="contained" sx={{ mt: 3 }}>
           Sign In
         </Button>
+        <Typography sx={{ mt: 2, color: "text.secondary" }}>
+          Don't have an account?
+          <Link href="/register"> Sign Up</Link>
+        </Typography>
       </Box>
     </Box>
   );
