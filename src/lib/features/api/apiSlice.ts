@@ -9,10 +9,10 @@ const apiSlice = createApi({
 
       if ("JwtToken") {
         console.log(11111);
-        
+
         headers.set(
           "authorization",
-          `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vaGl1bGlzbGFtOTAwQGdtYWlsLmNvbSIsInN1YiI6IjY2NTE0NmNmYWIyZGE3NTQzNDQ2YjU3OSIsImlhdCI6MTcxNjYwNDAzMSwiZXhwIjo1MzE2NjA0MDMxfQ.BYHygbIZVQw6_nsJdJg19vIJbrc4Z9FO4w__awHnT30`
+          `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vaGl1bGlzbGFtNUBnbWFpbC5jb20iLCJzdWIiOiI2NjYwMjdhYmE0MDgwZmRiZDM1MWYwNjYiLCJpYXQiOjE3MTc2NDA5MDAsImV4cCI6NTMxNzY0MDkwMH0.bZosuTQCbtYzvprDwE5Z8cj8cafpblNHnwta9Zdax_g`
         );
       }
       return headers;

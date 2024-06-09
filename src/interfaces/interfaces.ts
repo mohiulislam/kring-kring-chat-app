@@ -1,4 +1,3 @@
-import { string } from "yup";
 
 // Interfaces for basic enums
 export interface MediaType {
@@ -22,8 +21,8 @@ export interface ContactInfo {
 export interface User {
   username: string;
   password: string;
-  firstName?: string;
-  lastName?: string;
+  firstName: string;
+  lastName: string;
   profilePhoto?: string;
   isOnline: boolean;
   messages: Message[];
@@ -35,9 +34,11 @@ export interface User {
 
 // Interface for Group
 export interface Group {
+  _id: string;
   name?: string;
   users: User[];
   messages: Message[];
+  lastMessage: Message;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -60,11 +61,11 @@ export interface Media {
 // Interface for Message
 export interface Message {
   user: User;
-  group: Group;
+  group?: Group;
   content: string;
-  media: Media;
+  media?: Media;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt?: Date;
 }
 
 export interface Login {
@@ -80,7 +81,15 @@ export interface Register {
 }
 
 export interface LoginResponse {
+
   access_token: string;
+  user: {
+    username: string,
+    _id: string,
+    firstName: string,
+    lastName: string,
+    contactInfo:ContactInfo
+  }
 }
 
 export interface CountryType {
@@ -88,4 +97,16 @@ export interface CountryType {
   label: string;
   phone: string;
   suggested?: boolean;
+}
+
+export interface VerifyEmail {
+  code: string;
+  email: string;
+}
+
+export interface VerifyEmailRsponse {
+  success: boolean;
+  acsess_token: string;
+  usernmae: string;
+  message: string;
 }

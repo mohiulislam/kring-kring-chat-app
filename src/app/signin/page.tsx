@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Button, Link, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useLoginMutation } from "@/lib/features/api/auth/loginApi";
+import { useRouter } from "next/navigation";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -31,10 +33,19 @@ export default function SignInWithEmail() {
     resolver: yupResolver(validationSchema),
   });
 
+  const [login, { isLoading, isError, error, isSuccess }] = useLoginMutation();
   const onSubmit = (data: FormData) => {
-    console.log(data);
-    reset();
+    login({
+      username: data.email,
+      password: data.password,
+    });
   };
+  const router = useRouter();
+  useEffect(() => {
+    if (isSuccess) {
+      router.push("/chat");
+    }
+  }, [isSuccess]);
 
   return (
     <Box
@@ -72,7 +83,7 @@ export default function SignInWithEmail() {
           helperText={errors.password?.message}
         />
         <Button type="submit" variant="contained" sx={{ mt: 3 }}>
-          Sign In
+          {isLoading ? "Signin in..." : "Sign In"}
         </Button>
         <Typography sx={{ mt: 2, color: "text.secondary" }}>
           Don't have an account?

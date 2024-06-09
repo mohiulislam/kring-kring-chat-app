@@ -1,8 +1,10 @@
 "use client";
-import * as React from "react";
+import { useVerifyEmailMutation } from "@/lib/features/api/auth/verifyOtp";
 import { Input as BaseInput } from "@mui/base/Input";
-import { Box, styled } from "@mui/system";
 import { Button, Typography } from "@mui/material";
+import { Box, styled } from "@mui/system";
+import * as React from "react";
+import toast from "react-hot-toast";
 
 function OTP({
   separator,
@@ -182,8 +184,30 @@ function OTP({
   );
 }
 
-export default function OTPInput() {
+export default function OTPInput({
+  searchParams,
+}: {
+  searchParams: { email: string };
+}) {
   const [otp, setOtp] = React.useState("");
+  const [veriyEmail, { data, error, isLoading, isSuccess, isError }] =
+    useVerifyEmailMutation();
+  console.log(searchParams.email);
+  function handleverifyEmail() {
+    veriyEmail({
+      code: otp,
+      email: searchParams.email!,
+    });
+  }
+
+  React.useEffect(() => {
+    if (isSuccess && data?.message&& data?.success) {
+      toast.success(data?.message);
+    }
+    if (isSuccess && data?.message && !data?.success) {
+      toast.error(data?.message);
+    }
+  });
 
   return (
     <Box
@@ -217,7 +241,7 @@ export default function OTPInput() {
           separator={<span>-</span>}
           value={otp}
           onChange={setOtp}
-          length={5}
+          length={6}
         />
         <Button
           color="secondary"
@@ -228,6 +252,7 @@ export default function OTPInput() {
             alignSelf: "center",
             paddingY: 1,
           }}
+          onClick={() => handleverifyEmail()}
         >
           Verify OTP
         </Button>

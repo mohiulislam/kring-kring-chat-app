@@ -4,9 +4,19 @@ import { Box, Grid, List, Typography } from "@mui/material";
 import ChatItem from "./_components/ChatItem";
 import ChatBox from "./_components/ChatBox";
 import { useGetGroupsQuery } from "@/lib/features/api/group/groupsApi";
-
+import { useEffect, useState } from "react";
+import socket from "@/socket/socket";
 function Chat() {
   const { data: groups, isLoading, isError, error } = useGetGroupsQuery();
+  const [group, setGroup] = useState<string | null>();
+
+  useEffect(() => {
+    if (groups) {
+      groups.forEach((group) =>
+        socket.emit("joinGroup", { groupId: group._id })
+      );
+    }
+  }, [groups]);
 
   return (
     <Grid container style={{ height: "100%" }}>
@@ -49,19 +59,14 @@ function Chat() {
             >
               <List>
                 {groups?.map((group: any) => {
-                  const participant = group.users.find((user: any) => {
-                    console.log(user);
-                    return user.id !== "66442c92c50095aa1a7f7b2c";
-                  });
-                  const participantName =
-                    participant?.firstName || participant?.username;
                   return (
-                    <ChatItem
-                      participantName={participantName}
-                      lastMessageTime="now"
-                      key={group.id}
-                      lastMessage="Hello sona"
-                    />
+                    <div
+                      onClick={() => {
+                        setGroup(group.id);
+                      }}
+                    >
+                      <ChatItem group={group} />
+                    </div>
                   );
                 })}
               </List>

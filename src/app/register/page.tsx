@@ -2,10 +2,10 @@
 import { useRegisterMutation } from "@/lib/features/api/auth/registerApi";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import { redirect } from "next/navigation";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -30,20 +30,22 @@ export default function SignInWithPhone() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<FormData>({
     resolver: yupResolver(validationSchema),
   });
+  const router = useRouter();
 
   const [registration, { isLoading, error, data, isSuccess, isError }] =
     useRegisterMutation();
-
+  console.log(data);
   useEffect(() => {
     if (isSuccess) {
-      redirect("/register/verify");
+      router.push(`/register/verify?email=${data?.user.contactInfo.email}`);
     }
   }, [isSuccess]);
+
+  console.log(isSuccess);
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     registration({
@@ -57,7 +59,7 @@ export default function SignInWithPhone() {
     <>
       {
         <Box
-          component="main"
+          component="form"
           sx={{
             height: "100vh",
             display: "flex",

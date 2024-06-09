@@ -6,6 +6,11 @@ import { darkTheme } from "@/theme/muitheme";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import StoreProvider from "./StoreProvider";
 import { Box } from "@mui/system";
+import { Toaster } from "react-hot-toast";
+import dynamic from "next/dynamic";
+const MiniDrawer = dynamic(() => import("../components/Darwer"), {
+  ssr: false,
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +33,10 @@ export default function RootLayout({
               <Box
                 sx={{ height: "100vh", backgroundColor: "background.default" }}
               >
-                {children}
+                <div>
+                  <Toaster position="top-center" />
+                </div>
+                <MiniDrawer>{children}</MiniDrawer>
               </Box>
             </StoreProvider>
           </body>

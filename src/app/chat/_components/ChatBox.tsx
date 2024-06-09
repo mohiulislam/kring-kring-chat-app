@@ -1,16 +1,21 @@
 "use client";
 
 import {
-    Avatar,
-    Box,
-    ListItemAvatar,
-    ListItemText,
-    Typography,
+  Avatar,
+  Box,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
 } from "@mui/material";
 import ChatBubble from "../_components/ChatBubble";
 import ChatInput from "../_components/ChatInput";
+import toast from "react-hot-toast";
+import { useGetMessagesQuery } from "@/lib/features/api/group/message/meessageApi";
 function ChatBox() {
-
+const groupId="66604d2fecc21e0241eb5383"
+  const { data: messages, isLoading, isError, error } = useGetMessagesQuery({ groupId  });
+console.log("messages");
+console.log(messages);
   return (
     <Box
       sx={{

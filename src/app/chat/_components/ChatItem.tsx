@@ -1,22 +1,21 @@
-import React from "react";
+import { Group } from "@/interfaces/interfaces";
 import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { format } from "date-fns";
 
-type ChatItemProps = {
-  participantName: string;
-  lastMessage: string;
-  lastMessageTime: string;
-};
+export default function ChatItem({ group }: { group: Group }) {
+  const participantName =
+    group?.users[0]?.firstName + group?.users[0]?.lastName;
+  const lastMessage = group.lastMessage.content;
 
-export default function ChatItem({
-  participantName,
-  lastMessage,
-  lastMessageTime,
-}: ChatItemProps) {
+  const lastMessageTime = format(
+    group.lastMessage.updatedAt ?? "",
+    "M/d/yy, h:mma"
+  );
   return (
     <ListItem
       sx={{

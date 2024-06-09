@@ -1,9 +1,9 @@
-"use client";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  console.log("homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
   return (
     <Box
       component={"main"}
